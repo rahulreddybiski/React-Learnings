@@ -1,4 +1,6 @@
 
+import image from "./airbndbg.jpg";
+import memedata from "./memedata";
 /* function MainContent(){
     return(
         <div className="main container">
@@ -32,17 +34,28 @@ export default MainContent; */
 import bg_image from "./airbndbg.jpg"
 
 export default function MainContent(){
-    const title = "Online Experiences";
+    
+    let source;
+    function handleClick(){
+        let randomNumber  = Math.floor(Math.random() * 100);
+        // console.log(memedata.data.memes[randomNumber].url)
+        source = memedata.data.memes[randomNumber].url;
+        console.log(source)
+    }
     return (
         <div className="maincontent">
-            <div className="maincontent-image">
-                <img src={bg_image} className="bg-image"></img>
-            </div>
-            <div className="maincontent-body">
-                <h1 className="main-title">{title}</h1>
-                <p>join unique interactive activities led by one-of-a-kind-hosts--all thout leaving home.</p>
-            </div>
-
+          <div className="form-content">
+                <div className="input-fields">
+                    <input type="text" 
+                           className="input1" 
+                           placeholder="top text field"></input>
+                    <input type="text" 
+                           className="input2" 
+                           placeholder="bottom text field"></input>
+                </div>
+                <button onClick={handleClick} type="submit" className="btn">Get a new meme image</button>
+                <img src={source} className="meme-image"></img>
+          </div>
         </div>
     )
 }

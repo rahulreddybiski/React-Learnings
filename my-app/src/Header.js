@@ -1,6 +1,6 @@
 
 // import employee from "./images/employee.jpg"
-import logo from "./airbnblogo.png"
+import logo from "./Memegeneratorlogo.png"
 /* function Header(){
     return (
         <nav className="nav-items">
@@ -35,8 +35,9 @@ export default Header; */
 
 export default function Header(){
     return (
-        <nav>
+        <nav className="navbar">
             <img src={logo} className="logo"></img>
+            <p>React Course - Project 3</p>
         </nav>
     )
 }
