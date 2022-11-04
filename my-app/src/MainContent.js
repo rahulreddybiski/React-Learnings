@@ -32,16 +32,25 @@ export default MainContent; */
 export default MainContent; */
 
 import bg_image from "./airbndbg.jpg"
+import React from "react";
 
 export default function MainContent(){
+    const btnName = "Get a new meme image"
+    const [url,setUrl] = React.useState("");
     
     let source;
     function handleClick(){
         let randomNumber  = Math.floor(Math.random() * 100);
         // console.log(memedata.data.memes[randomNumber].url)
         source = memedata.data.memes[randomNumber].url;
-        console.log(source)
+        getnewimage(source)
+        
     }
+    function getnewimage(imgSrc){
+        setUrl(imgSrc)
+    }
+    
+
     return (
         <div className="maincontent">
           <div className="form-content">
@@ -53,8 +62,8 @@ export default function MainContent(){
                            className="input2" 
                            placeholder="bottom text field"></input>
                 </div>
-                <button onClick={handleClick} type="submit" className="btn">Get a new meme image</button>
-                <img src={source} className="meme-image"></img>
+                <button onClick={handleClick} type="submit" className="btn">{btnName}</button>
+                <img src={url} className="meme-image"></img>
           </div>
         </div>
     )
