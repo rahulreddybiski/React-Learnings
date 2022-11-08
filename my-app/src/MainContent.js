@@ -35,19 +35,33 @@ import bg_image from "./airbndbg.jpg"
 import React from "react";
 
 export default function MainContent(){
-    const btnName = "Get a new meme image"
-    const [url,setUrl] = React.useState("");
+
+    const [meme,setMeme] = React.useState(
+        {
+            topText : "",
+            bottomText : " ",
+            randomImage : "https://i.imgflip.com/30b1gx.jpg"
+        }
+    )
     
-    let source;
-    function handleClick(){
-        let randomNumber  = Math.floor(Math.random() * 100);
-        // console.log(memedata.data.memes[randomNumber].url)
-        source = memedata.data.memes[randomNumber].url;
-        getnewimage(source)
-        
-    }
-    function getnewimage(imgSrc){
-        setUrl(imgSrc)
+    
+    const [allMemeImages,setallMemeImages] = React.useState(
+        memedata
+    )
+    
+    
+    
+    
+    function getMemeImage(){
+        const memearray = allMemeImages.data.memes;
+        const random = Math.floor(Math.random() * 99)
+
+        setMeme(prev => {
+            return {
+                ...prev,
+                randomImage : memearray[random].url
+            }
+        })
     }
     
 
@@ -62,8 +76,8 @@ export default function MainContent(){
                            className="input2" 
                            placeholder="bottom text field"></input>
                 </div>
-                <button onClick={handleClick} type="submit" className="btn">{btnName}</button>
-                <img src={url} className="meme-image"></img>
+                <button onClick={getMemeImage} type="submit" className="btn">{"Get a new meme image"}</button>
+                <img src={meme.randomImage} className="meme-image"></img>
           </div>
         </div>
     )
